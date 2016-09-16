@@ -21,6 +21,7 @@ using AppStudio.Uwp.Navigation;
 using OpenSeaMap.ViewModels;
 using Windows.Devices.Geolocation;
 using Windows.UI.Xaml.Controls.Maps;
+using System;
 
 namespace OpenSeaMap.Pages
 {
@@ -43,28 +44,34 @@ namespace OpenSeaMap.Pages
 
         private void MyMap_Loaded(object sender, RoutedEventArgs e)
         {
-            myMap.Center =
-                new Geopoint(new BasicGeoposition()
-                {
+            try
+            {
+                myMap.Center =
+                    new Geopoint(new BasicGeoposition()
+                    {
                     //Geopoint for Seattle 
                     Latitude = 47.604,
-                    Longitude = -122.329
-                });
-            myMap.ZoomLevel = 12;
+                        Longitude = -122.329
+                    });
+                myMap.ZoomLevel = 12;
 
-            // Create an HTTP data source.
-            // This example retrieves tiles from a fictitious web service.
-            HttpMapTileDataSource dataSource = new HttpMapTileDataSource("http://tiles.openseamap.org/seamark/{zoomlevel}/{x}/{y}.png");
-            //"http://www.<web service name>.com/z={zoomlevel}&x={x}&y={y}");
+                // Create an HTTP data source.
+                // This example retrieves tiles from a fictitious web service.
+                HttpMapTileDataSource dataSource = new HttpMapTileDataSource("http://tiles.openseamap.org/seamark/{zoomlevel}/{x}/{y}.png");
+                //"http://www.<web service name>.com/z={zoomlevel}&x={x}&y={y}");
 
-            // Optionally, add custom HTTP headers if the web service requires them.
-            //dataSource.AdditionalRequestHeaders.Add("header name", "header value");
+                // Optionally, add custom HTTP headers if the web service requires them.
+                //dataSource.AdditionalRequestHeaders.Add("header name", "header value");
 
-            // Create a tile source and add it to the Map control.
-            MapTileSource tileSource = new MapTileSource(dataSource);
-            //tileSource.Bounds = boundingBox;
-            myMap.TileSources.Add(tileSource);
-
+                // Create a tile source and add it to the Map control.
+                MapTileSource tileSource = new MapTileSource(dataSource);
+                //tileSource.Bounds = boundingBox;
+                myMap.TileSources.Add(tileSource);
+            }
+            catch (Exception exc)
+            {
+                MapText.Text = exc.Message;
+            }
         }
 
         private void MyMap_MapTapped(Windows.UI.Xaml.Controls.Maps.MapControl sender, Windows.UI.Xaml.Controls.Maps.MapInputEventArgs args)

@@ -90,7 +90,14 @@
 							VerticalAlignment="Center"
 							NavigateUri="{x:Bind AboutThisAppModel.WindowsAppStudioWeb}"
 							Style="{StaticResource HyperlinkStyle}"/>
-					</StackPanel>
+                    </StackPanel>
+                    <HyperlinkButton
+							Margin="6,0,0,0"
+							Content="Open Sea Map"
+							VerticalAlignment="Center"
+							NavigateUri="{x:Bind AboutThisAppModel.OpenSeaMap}"
+							Style="{StaticResource HyperlinkStyle}"/>
+
 				</StackPanel>
 			</StackPanel>
         </ScrollViewer>

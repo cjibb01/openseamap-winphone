@@ -23,6 +23,7 @@ namespace OpenSeaMap.ViewModels
             this.WasLibs = "https://github.com/wasteam/waslibs";
             this.WindowsAppStudioWeb = "https://appstudio.windows.com/";
             this.NewtonsoftWeb = "http://www.newtonsoft.com/json";
+            this.OpenSeaMap = "http://www.openseamap.org/";
         }
 
 		public string AppName { get; set; }
@@ -33,6 +34,7 @@ namespace OpenSeaMap.ViewModels
         public string WasLibs { get; set; }
         public string WindowsAppStudioWeb { get; set; }
         public string NewtonsoftWeb { get; set; }
+        public string OpenSeaMap { get; set; }
         public BitmapImage AppLogo { get; set; }
 
 		private bool _isMoreInfoVisible;

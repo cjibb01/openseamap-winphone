@@ -52,30 +52,22 @@
     </was_controls:ShellControl.PaneHeader>
     <Grid>
         <Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>            
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Background="Aquamarine">
-            <TextBlock x:Name="MapText" Grid.Row="0" Margin="12, 10, 12, 10" Visibility="Visible" Text="abc" />
-            <maps:MapControl x:Name="myMap" Grid.Row="1" Visibility="Visible"    
-                                             ZoomLevel="{Binding ElementName=zoomSlider,Path=Value, Mode=TwoWay}"
-                                             Heading="{Binding ElementName=headingSlider,Path=Value, Mode=TwoWay}"
-                                             DesiredPitch="{Binding ElementName=desiredPitchSlider,Path=Value, Mode=TwoWay}"    
-                                             HorizontalAlignment="Left"
-                                             />
-        </Grid>
-        <Pivot Grid.Row="1"
+        <Pivot Grid.Row="0"
 			Style="{StaticResource AppStudioPivotStyle}">
 
             <PivotItem
-				Header="Home"
+				Header="aaHome"
 				Style="{StaticResource AppStudioPivotItemStyle}">
 
                 <Grid x:Name="RootGrid" Margin="12,20,12,14">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*" />
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
@@ -98,7 +90,18 @@
                             </StackPanel>
                         </ScrollViewer>
                     </Grid>
-                   
+                    <Grid Grid.Row="1">
+                        <StackPanel>
+                            <TextBlock x:Name="MapText"  Margin="12, 10, 12, 10" Visibility="Visible" Text="abc" />
+                            <maps:MapControl x:Name="myMap" Visibility="Visible" Height="250" Width="250"
+                                                 ZoomLevel="{Binding ElementName=zoomSlider,Path=Value, Mode=TwoWay}"
+                                                 Heading="{Binding ElementName=headingSlider,Path=Value, Mode=TwoWay}"
+                                                 DesiredPitch="{Binding ElementName=desiredPitchSlider,Path=Value, Mode=TwoWay}"    
+                                                 HorizontalAlignment="Left"
+                                                 />
+                            <TextBlock x:Name="MapText2" Margin="12, 10, 12, 10" Visibility="Visible" Text="def" />
+                        </StackPanel>
+                    </Grid>
                     <!-- Status Block for providing messages to the user.  Use the
                         NotifyUser() method to populate the message -->
                     <Border x:Name="ErrorBorder" Background="Red" Grid.Row="2"/>
